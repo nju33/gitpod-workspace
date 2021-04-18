@@ -24,6 +24,7 @@ init_bash() {
 init_git() {
   git config --global user.signingkey "$GIT_USER_SIGNINGKEY"
   git config --global commit.gpgsign true
+  git config --global tag.gpgsign true
 }
 
 init_gpg
