@@ -20,4 +20,4 @@ init_ngrok() {
 
 init_git
 init_code
-
+init_ngrok
