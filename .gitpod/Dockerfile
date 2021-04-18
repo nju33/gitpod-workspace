@@ -12,3 +12,4 @@ RUN sudo apt-get update \
 RUN brew install gibo thefuck
 
 COPY --chown=gitpod:gitpod .gitpod/.balsh_user_init "$HOME/.bashrc.d/.bash_user_init"
+COPY --chown=gitpod:gitpod .gitpod/.thefuck_init "$HOME/.bashrc.d/.thefuck_init"
