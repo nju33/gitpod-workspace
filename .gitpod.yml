@@ -11,8 +11,4 @@ image:
 tasks:
   - before: .gitpod/before.sh
     init: .gitpod/init.sh
-    command: echo 'Completed before.sh. and init.sh'
-
-vscode:
-  extensions:
-    - /workspace/gitpod-workspace/.gitpod/wdhongtw.gpg-indicator-0.3.4.vsix
+    command: 'echo GPG_TTY=$(tty)'
