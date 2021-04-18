@@ -17,5 +17,10 @@ init_git_around_gpg() {
   git config --global tag.gpgsign true
 }
 
+init_code() {
+  code --install-extension "$HOME/wdhongtw.gpg-indicator-0.3.4.vsix"
+}
+
 init_gpg
 init_git_around_gpg
+init_code
