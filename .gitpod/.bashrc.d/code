@@ -1,0 +1,3 @@
+if [ ! grep "wdhongtw.gpg-indicator" <(code --list-extensions) ]; then
+  code --install-extension "$HOME/wdhongtw.gpg-indicator-0.3.4.vsix"
+fi
