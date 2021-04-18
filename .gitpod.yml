@@ -9,8 +9,9 @@ image:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - before: .gitpod/setup.sh
-    command: echo 'Completed setup.sh'
+  - before: .gitpod/before.sh
+    init: .gitpod/init.sh
+    command: echo 'Completed before.sh. and init.sh'
 
 vscode:
   extensions:
