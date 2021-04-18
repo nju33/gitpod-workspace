@@ -18,6 +18,10 @@ RUN git clone https://github.com/nju33/.dotfiles.git \
   && ln -s "$(pwd)/.agignore" "$HOME/.agignore" \
   && ln -s "$(pwd)/.tmux.conf" "$HOME/.tmux.conf" \
   && mkdir -p "$HOME/.config" && ln -s "$(pwd)/.config_starship.toml" "$HOME/.config/starship.toml"
+  
+RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
+  && unzip ngrok.zip -d /usr/local/bin
+  && rm ngrok.zip
 
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
