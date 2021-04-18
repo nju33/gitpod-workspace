@@ -14,7 +14,11 @@ RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.
 WORKDIR "$HOME"
 RUN git clone https://github.com/nju33/.dotfiles.git \
   && cd .dotfiles \
-  && ln -s "$(pwd)/.bash_aliases" "$HOME/.bash_aliases"
+  && ln -s "$(pwd)/.bash_aliases" "$HOME/.bash_aliases" \
+  && ln -s "$(pwd)/.agignore" "$HOME/.agignore" \
+  && ln -s "$(pwd)/.tmux.conf" "$HOME/.tmux.conf" \
+  && mkdir -p "$HOME/.config" && ln -s "$(pwd)/.config_starship.toml" "$HOME/.config/starship.toml" \
+  && git config --global include.path="$HOME/.dotfiles/.gitconfig"
 
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
