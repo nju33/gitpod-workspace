@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -eux
 
 init_gpg() {
   local secretkey="tmpsecretkey"
