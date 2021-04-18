@@ -19,6 +19,9 @@ init_bash() {
   fi
 
   echo "export GPG_TTY=\"$(tty)\"" >"$parentdir/gpg"
+
+  GPG_TTY=$(tty)
+  export GPG_TTY
 }
 
 init_git() {
