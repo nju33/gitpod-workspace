@@ -11,22 +11,11 @@ init_gpg() {
   shred --remove "$secretkey"
 }
 
-init_bash() {
-  local parentdir="$HOME/.bashrc.d"
-  
-  if [ ! -d "$parentdir" ]; then
-    mkdir "$parentdir"
-  fi
-
-  echo "export GPG_TTY=\"$(tty)\"" >"$parentdir/gpg"
-}
-
-init_git() {
+init_git_around_gpg() {
   git config --global user.signingkey "$GIT_USER_SIGNINGKEY"
   git config --global commit.gpgsign true
   git config --global tag.gpgsign true
 }
 
 init_gpg
-init_bash
-init_git
+init_git_around_gpg
