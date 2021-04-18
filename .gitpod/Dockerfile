@@ -18,7 +18,7 @@ RUN git clone https://github.com/nju33/.dotfiles.git \
 
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
-  && gsed -i -e "/asciinema\|azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx/d" Brewfile \
+  && sed -i -e "/asciinema\|azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx/d" Brewfile \
   && brew bundle
 
 COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/gpg "$HOME/.bashrc.d/33-gpg"
