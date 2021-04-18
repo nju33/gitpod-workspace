@@ -6,9 +6,13 @@ image:
 # ports:
 #   - port: 3000
 #     onOpen: open-preview
-
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - before: .gitpod/before.sh
     init: .gitpod/init.sh
     command: 'echo Completed'
+
+vscode:
+  extensions:
+    - mikestead.dotenv
+    - github.vscode-pull-request-github
