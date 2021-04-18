@@ -18,8 +18,6 @@ RUN git clone https://github.com/nju33/.dotfiles.git \
   && ln -s "$(pwd)/.agignore" "$HOME/.agignore" \
   && ln -s "$(pwd)/.tmux.conf" "$HOME/.tmux.conf" \
   && mkdir -p "$HOME/.config" && ln -s "$(pwd)/.config_starship.toml" "$HOME/.config/starship.toml"
-  
-RUN cd .dotfiles && git config --global include.path="$HOME/.dotfiles/.gitconfig"
 
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
