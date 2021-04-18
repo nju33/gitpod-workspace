@@ -11,4 +11,4 @@ RUN sudo apt-get update \
 # Install custom tools, runtime, etc.
 RUN brew install gibo thefuck
 
-COPY .bash_user_init "$HOME/.bashrc.d/.bash_user_init"
+COPY .gitpod/.bash_user_init "$HOME/.bashrc.d/.bash_user_init"
