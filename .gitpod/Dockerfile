@@ -13,6 +13,6 @@ RUN brew install gibo thefuck
 
 COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/gpg "$HOME/.bashrc.d/33-gpg"
 COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/thefuck "$HOME/.bashrc.d/33-thefuck"
-COPY --chown=gitpod:gitpod .gitpod/wdhongtw.gpg-indicator-0.3.4.vsix "$HOME/wdhongtw.gpg-indicator-0.3.4.vsix"
+COPY --chown=gitpod:gitpod .gitpod/extensions/wdhongtw.gpg-indicator-0.3.4.vsix "$HOME/wdhongtw.gpg-indicator-0.3.4.vsix"
 
 RUN code --install-extension "$HOME/wdhongtw.gpg-indicator-0.3.4.vsix"
