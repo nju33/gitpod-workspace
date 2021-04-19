@@ -1,1 +1,9 @@
-# Gitpod Workspace
+# 
+
+## Gitpod variables
+
+- `GIT_USER_SIGNINGKEY`
+- `NGROK_AUTHTOKEN`
+- `GPG_SECRET_KEY_NJU33`
+- `VERCEL_TOKEN`
+- `GH_AUTHTOKEN`
