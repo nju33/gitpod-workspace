@@ -2,6 +2,7 @@ FROM gitpod/workspace-full
 
 ###
 # Import from https://github.com/corneliusludmann/gitpod-playground/blob/sshd-over-chisel/.gitpod.Dockerfile
+USER root
 # Install Dropbear SSH server
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
         dropbear \
