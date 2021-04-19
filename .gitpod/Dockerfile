@@ -1,20 +1,8 @@
 FROM gitpod/workspace-full
 
-###
-# Import from https://github.com/corneliusludmann/gitpod-playground/blob/sshd-over-chisel/.gitpod.Dockerfile
-USER root
-# Install Dropbear SSH server
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-        dropbear \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
-
-# Install Chisel
-RUN curl https://i.jpillora.com/chisel! | bash
-###
-
 # Install custom tools, runtime, etc.
 RUN sudo apt-get update \
-  && sudo apt-get install -y expect tmux \
+  && sudo apt-get install -y expect ssh tmux \
   && sudo rm -rf /var/lib/apt/lists/*
 
 # Apply user-specific settings
