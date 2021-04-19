@@ -22,6 +22,15 @@ RUN git clone https://github.com/nju33/.dotfiles.git \
 RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
   && sudo unzip ngrok.zip -d /usr/local/bin \
   && rm ngrok.zip
+  
+# Install azure-cli
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Install aws-cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+  && unzip awscliv2.zip \
+  && sudo ./aws/install \
+  && rm awscliv2.zip
 
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
