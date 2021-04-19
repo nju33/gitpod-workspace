@@ -6,7 +6,7 @@ RUN sudo apt-get update \
   && sudo rm -rf /var/lib/apt/lists/*
 
 # Apply user-specific settings
-# ENV ...
+ENV NODE_OPTIONS=--max_old_space_size=4096
 
 # Install yvm
 RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
