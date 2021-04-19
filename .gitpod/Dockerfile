@@ -2,13 +2,13 @@ FROM gitpod/workspace-full
 
 # Install custom tools, runtime, etc.
 RUN sudo apt-get update \
-  && sudo apt-get install -y chromium-browser expect tmux \
+  && sudo apt-get install -y chromium-browser libnss3-dev expect tmux \
   && sudo rm -rf /var/lib/apt/lists/*
 
 # Apply user-specific settings
 ENV NODE_OPTIONS=--max_old_space_size=4096
 
-RUN npm install --global caniuse-cmd npm-home npm pageres-cli tldr
+RUN npm install --global caniuse-cmd npm-home npm pageres-cli tldr vercel
 
 # Install yvm
 RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
