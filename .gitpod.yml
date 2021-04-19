@@ -11,8 +11,10 @@ tasks:
   - before: .gitpod/before.sh
     init: .gitpod/init.sh
     command: |
+      set -x
       echo 'Please execute following like'
       echo '  init_code'
+      set +x
 
 vscode:
   extensions:
