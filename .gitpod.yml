@@ -10,7 +10,9 @@ image:
 tasks:
   - before: .gitpod/before.sh
     init: .gitpod/init.sh
-    command: 'Please execute `init_code`'
+    command: |
+      echo 'Please execute following like'
+      echo '  init_code'
 
 vscode:
   extensions:
