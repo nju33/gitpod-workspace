@@ -3,12 +3,11 @@
 set -eux
 
 init_gpg() {
-  local secretkey="tmpsecretkey"
-  echo "$GPG_SECRET_KEY_NJU33" | base64 --decode >"$secretkey"
-
-  gpg --batch --import --allow-secret-key-import "$secretkey"
-
-  shred --remove "$secretkey"
+  set +u
+  if [ -n "$GPG_SECRET_KEY_NJU33" ]; then
+    gpg --batch --import --allow-secret-key-import <(echo "$GPG_SECRET_KEY_NJU33" | base64 --decode)
+  fi
+  set -u
 }
 
 init_git_around_gpg() {
