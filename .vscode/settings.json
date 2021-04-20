@@ -9,6 +9,12 @@
 		".*.js": "javascript",
 		".{husky,lintstaged,renovate,stylelint,all-contributors}rc": "json"
 	},
+	"files.exclude": {
+		"**/.gitpod": true
+	},
+	"files.watcherExclude": {
+		"**/.gitpod/**": true
+	},
 	"javascript.suggestionActions.enabled": false,
 	"jest.autoEnable": false,
 	"stylelint.enable": false,
