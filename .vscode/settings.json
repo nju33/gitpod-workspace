@@ -17,6 +17,9 @@
 	},
 	"javascript.suggestionActions.enabled": false,
 	"jest.autoEnable": false,
+	"peacock.affectStatusBar": false,
+	"peacock.color": "transparent",
+	"peacock.remoteColor": "transparent",
 	"stylelint.enable": false,
 	"workbench.colorCustomizations": {
 		"activityBar.activeBackground": "#1a1a1a00",
