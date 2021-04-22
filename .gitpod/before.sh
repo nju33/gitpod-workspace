@@ -16,5 +16,10 @@ init_git_around_gpg() {
   git config --global tag.gpgsign true
 }
 
+init_zoxide() {
+  cp "$GITPOD_REPO_ROOT/.gitpod/zoxide/db.zo" "$HOME/.local/share/zoxide/"
+}
+
 init_gpg
 init_git_around_gpg
+init_zoxide
