@@ -17,7 +17,13 @@ init_git_around_gpg() {
 }
 
 init_zoxide() {
-  cp "$GITPOD_REPO_ROOT/.gitpod/zoxide/db.zo" "$HOME/.local/share/zoxide/"
+  if [ -d "$GITPOD_REPO_ROOT/.gitpod/zoxide" ] && [ -f "$GITPOD_REPO_ROOT/.gitpod/zoxide/db.zo" ]; then
+    if [ ! -d "$HOME/.local/share/zoxide" ]; then
+      mkdir -p "$HOME/.local/share/zoxide"
+    fi
+    
+    cp "$GITPOD_REPO_ROOT/.gitpod/zoxide/db.zo" "$HOME/.local/share/zoxide/"
+  fi
 }
 
 init_gpg
