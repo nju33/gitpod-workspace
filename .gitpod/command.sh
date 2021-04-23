@@ -3,7 +3,7 @@
 set -eux
 
 init_git() {
-  git config --global include.path="$HOME/.dotfiles/.gitconfig" | :
+  git config --global include.path "$HOME/.dotfiles/.gitconfig"
 }
 
 init_ngrok() {
