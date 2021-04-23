@@ -7,19 +7,19 @@ init_git() {
 }
 
 init_ngrok() {
-  set +u
+  set +ux
   if [ -n "$NGROK_AUTHTOKEN" ]; then
     ngrok authtoken "$NGROK_AUTHTOKEN"
   fi
-  set -u
+  set -ux
 }
 
 init_gh() {
-  set +u
+  set +ux
   if [ -n "$GH_AUTHTOKEN" ]; then
     gh auth login --with-token < <(echo "$GH_AUTHTOKEN")
   fi
-  set -u
+  set -ux
 }
 
 init_git
