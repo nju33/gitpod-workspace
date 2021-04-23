@@ -11,9 +11,9 @@ init_gpg() {
 }
 
 init_git_around_gpg() {
-  set +x
+  set +ux
   git config --global user.signingkey "$GIT_USER_SIGNINGKEY"
-  set -x
+  set -ux
   git config --global commit.gpgsign true
   git config --global tag.gpgsign true
 }
