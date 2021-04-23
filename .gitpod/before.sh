@@ -3,11 +3,11 @@
 set -eux
 
 init_gpg() {
-  set +u
+  set +ux
   if [ -n "$GPG_SECRET_KEY_NJU33" ]; then
     gpg --batch --import --allow-secret-key-import <(echo "$GPG_SECRET_KEY_NJU33" | base64 --decode)
   fi
-  set -u
+  set -ux
 }
 
 init_git_around_gpg() {
