@@ -2,26 +2,19 @@
 
 set -eux
 
-init_git() {
-  git config --global include.path="$HOME/.dotfiles/.gitconfig" | :
-}
+init_js_workspace() {
+  local pkg_file="$GITPOD_REPO_ROOT/package.json"
+  local yarn_lock_file="$GITPOD_REPO_ROOT/yarn.lock"
+  local pkg_lock_file="$GITPOD_REPO_ROOT/package-lock.json"
 
-init_ngrok() {
-  set +u
-  if [ -n "$NGROK_AUTHTOKEN" ]; then
-    ngrok authtoken "$NGROK_AUTHTOKEN"
+  if [ -f "$pkg_file" ]; then
+    # Install dependencies
+    if [ -f "$yarn_lock_file" ]; then
+      yarn
+    elif [ -f "$pkg_lock_file" ]; then
+      npm ci
+    fi
   fi
-  set -u
 }
 
-init_gh() {
-  set +u
-  if [ -n "$GH_AUTHTOKEN" ]; then
-    gh auth login --with-token < <(echo "$GH_AUTHTOKEN")
-  fi
-  set -u
-}
-
-init_git
-init_ngrok
-init_gh
+init_js_workspace
