@@ -5,7 +5,7 @@ set -eux
 init_gpg() {
   set +ux
   if [ -n "$GPG_SECRET_KEY_NJU33" ]; then
-    gpg --batch --import --allow-secret-key-import <(echo "$GPG_SECRET_KEY_NJU33" | base64 --decode)
+    gpg --batch --import --allow-secret-key-import <(echo "$GPG_SECRET_KEY" | base64 --decode)
   fi
   set -ux
 }
