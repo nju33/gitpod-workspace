@@ -32,10 +32,14 @@ RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd
 #   && sudo ./aws/install \
 #   && rm awscliv2.zip
 
+# Install transfer.sh
+# RUN git clone https://github.com/dutchcoders/transfer.sh.git ~/oss/transfer.sh
+
 # RUN brew doctor
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
   && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed/d" Brewfile \
+  && brew update \
   && brew bundle
 
 COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/gpg "$HOME/.bashrc.d/333-gpg"
