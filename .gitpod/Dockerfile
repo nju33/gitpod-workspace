@@ -35,7 +35,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && sudo ./aws/install \
   && rm awscliv2.zip
 
-RUN brew docotor
+RUN brew doctor
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
   && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed/d" Brewfile \
