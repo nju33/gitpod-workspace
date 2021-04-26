@@ -4,7 +4,7 @@ set -eux
 
 init_gpg() {
   set +ux
-  if [ -n "$GPG_SECRET_KEY_NJU33" ]; then
+  if [ -n "$GPG_SECRET_KEY" ]; then
     gpg --batch --import --allow-secret-key-import <(echo "$GPG_SECRET_KEY" | base64 --decode)
   fi
   set -ux
@@ -28,6 +28,15 @@ init_zoxide() {
   fi
 }
 
+init_bit() {
+  set +ux
+  if [ -n "$BIT_SSH_SECRET_KEY" ]; then
+    ssh-add <(echo "$BIT_SSH_SECRET_KEY" | base64 --decode)
+  fi
+  set -ux
+}
+
 init_gpg
 init_git_around_gpg
 init_zoxide
+init_bit
