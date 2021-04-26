@@ -9,6 +9,7 @@ RUN sudo apt-get update \
 ENV NODE_OPTIONS=--max_old_space_size=4096
 
 RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel
+RUN bvm install
 
 # Install yvm
 RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
@@ -34,6 +35,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && sudo ./aws/install \
   && rm awscliv2.zip
 
+RUN git config --global postBuffer 100M
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
   && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed/d" Brewfile \
