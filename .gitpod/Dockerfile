@@ -12,8 +12,6 @@ ENV PATH="$PATH:$HOME/bin"
 RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel
 RUN bvm install
 
-RUN eval "$(ssh-agent -s)"
-
 # Install yvm
 RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
 
