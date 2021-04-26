@@ -11,9 +11,6 @@ ENV NODE_OPTIONS=--max_old_space_size=4096
 RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel
 RUN bvm install
 
-# Install yvm
-RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
-
 WORKDIR "$HOME"
 RUN git clone https://github.com/nju33/.dotfiles.git \
   && cd .dotfiles \
@@ -27,15 +24,15 @@ RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd
   && rm ngrok.zip
   
 # Install azure-cli
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+# RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # Install aws-cli
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
-  && unzip awscliv2.zip \
-  && sudo ./aws/install \
-  && rm awscliv2.zip
+# RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+#   && unzip awscliv2.zip \
+#   && sudo ./aws/install \
+#   && rm awscliv2.zip
 
-RUN brew doctor
+# RUN brew doctor
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
   && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed/d" Brewfile \
