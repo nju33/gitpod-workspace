@@ -9,7 +9,6 @@ RUN sudo apt-get update \
 ENV NODE_OPTIONS=--max_old_space_size=4096
 
 RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel
-RUN bvm install
 
 # Install yvm
 RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
