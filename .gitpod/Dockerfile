@@ -7,8 +7,12 @@ RUN sudo apt-get update \
 
 # Apply user-specific settings
 ENV NODE_OPTIONS=--max_old_space_size=4096
+ENV PATH="$PATH:$HOME/bin"
 
-RUN npm install --global @google/clasp bit-bin caniuse-cmd npm-home npm pageres-cli tldr vercel
+RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel
+RUN bvm install
+
+RUN eval "$(ssh-agent -s)"
 
 # Install yvm
 RUN curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
@@ -39,10 +43,10 @@ RUN cd .dotfiles \
   && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed/d" Brewfile \
   && brew bundle
 
-COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/gpg "$HOME/.bashrc.d/33-gpg"
-COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/thefuck "$HOME/.bashrc.d/33-thefuck"
-COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/starship "$HOME/.bashrc.d/33-starship"
-COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/code "$HOME/.bashrc.d/33-code"
-COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/zoxide "$HOME/.bashrc.d/33-zoxide"
+COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/gpg "$HOME/.bashrc.d/333-gpg"
+COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/thefuck "$HOME/.bashrc.d/333-thefuck"
+COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/starship "$HOME/.bashrc.d/333-starship"
+COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/code "$HOME/.bashrc.d/333-code"
+COPY --chown=gitpod:gitpod .gitpod/.bashrc.d/zoxide "$HOME/.bashrc.d/333-zoxide"
 COPY --chown=gitpod:gitpod .gitpod/extensions/wdhongtw.gpg-indicator-0.3.4.vsix "$HOME/wdhongtw.gpg-indicator-0.3.4.vsix"
 
