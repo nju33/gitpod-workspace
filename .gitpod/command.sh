@@ -4,6 +4,12 @@ set -eux
 
 init_git() {
   git config --global include.path "$HOME/.dotfiles/.gitconfig"
+  
+  set +ux
+  if [ -n "$GLITCH_REMOTE_URL" ]; then
+    git remote add glitch "$GLITCH_REMOTE_URL"
+  fi
+  set -ux
 }
 
 init_ngrok() {
