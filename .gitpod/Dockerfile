@@ -2,7 +2,7 @@ FROM gitpod/workspace-full
 
 # Install custom tools, runtime, etc.
 RUN sudo apt-get update \
-  && sudo apt-get install -y chromium-browser libgtk-3-dev libnss3-dev expect tmux \
+  && sudo apt-get install -y chromium-browser libgtk-3-dev libnss3-dev expect tmux emacs \
   && sudo rm -rf /var/lib/apt/lists/*
 
 # Apply user-specific settings
@@ -17,6 +17,7 @@ RUN git clone https://github.com/nju33/.dotfiles.git \
   && ln -s "$(pwd)/.bash_aliases" "$HOME/.bash_aliases" \
   && ln -s "$(pwd)/.agignore" "$HOME/.agignore" \
   && ln -s "$(pwd)/.tmux.conf" "$HOME/.tmux.conf" \
+  && ln -s "$(pwd)/init.el" "$HOME/init.el" \
   && mkdir -p "$HOME/.config" && ln -s "$(pwd)/.config_starship.toml" "$HOME/.config/starship.toml"
   
 RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
@@ -38,7 +39,7 @@ RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd
 # RUN brew doctor
 # Install custom tools, runtime, etc.
 RUN cd .dotfiles \
-  && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed/d" Brewfile \
+  && sed -i -e "/azure-cli\|git-lfs\|imagemagick\|python\|ruby\|webp\|tmux\|jq\|tree\|vim\|gnupg\|nginx\|the_silver_searcher\|peco\|monolith\|ngrok\|unrar\|duf\|sed\|emacs/d" Brewfile \
   && brew update \
   && brew bundle
 
