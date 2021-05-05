@@ -29,7 +29,7 @@ init_gh() {
 }
 
 init_navi() {
-  local github_user="$(echo $GITPOD_WORKSPACE_CONTEXT | jq -r .repository.owner)"
+  local github_user="$(echo "$GITPOD_WORKSPACE_CONTEXT" | jq -r .repository.owner)"
   local remote_url="https://github.com/$github_user/cheats.git"
   local target_dir="$(navi info cheats-path)/${github_user}__cheats"
   
