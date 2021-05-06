@@ -10,8 +10,7 @@ ENV NODE_OPTIONS=--max_old_space_size=4096
 
 RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel \
   && npm cache clean --force
-RUN bvm install \
-  && eval "$(ssh-agent -s)"
+RUN bvm install
 
 WORKDIR "$HOME"
 RUN git clone https://github.com/nju33/.dotfiles.git \
