@@ -8,10 +8,9 @@ RUN sudo apt-get update \
 # Apply user-specific settings
 ENV NODE_OPTIONS=--max_old_space_size=4096
 
-# RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel
-RUN npm install --global @teambit/bvm npm pageres-cli vercel \
+RUN npm install --global @google/clasp @teambit/bvm caniuse-cmd npm-home npm pageres-cli tldr vercel \
   && npm cache clean --force
-# RUN bvm install
+RUN bvm install
 
 WORKDIR "$HOME"
 RUN git clone https://github.com/nju33/.dotfiles.git \
