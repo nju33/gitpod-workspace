@@ -65,10 +65,16 @@ init_bit() {
 }
 
 init_rclone() {
-  set +u
+  set +ux
+
+  config_file="$HOME/.config/rclone/rclone.conf"
+
+  if [ ! -d "$config_file" ]; then
+    mkdir -p "$(dirname "$config_file")"
+  fi
 
   if [ -n "$RCLONE_CONFIG" ]; then
-    echo "$RCLONE_CONFIG" | base64 --decode >"$HOME/.config/rclone/rclone.conf"
+    echo "$RCLONE_CONFIG" | base64 --decode >"$config_file"
   fi
 
   set -ux
