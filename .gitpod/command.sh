@@ -64,11 +64,22 @@ init_bit() {
   set -ux
 }
 
+init_rclone() {
+  set +u
+
+  if [ -n "$RCLONE_CONFIG" ]; then
+    echo "$RCLONE_CONFIG" | base64 --decode >"$HOME/.config/rclone/rclone.conf"
+  fi
+
+  set -ux
+}
+
 init_git
 init_ngrok
 init_gh
 init_navi
 init_bit
+init_rclone
 
 set +x
 
