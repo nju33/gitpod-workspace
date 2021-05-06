@@ -46,10 +46,29 @@ init_navi() {
   fi
 }
 
+init_bit() {
+  set +u
+  tempfile="$(mktemp)"
+
+  trap "rm -f ""$tempfile""" ERR
+  set +x
+
+  if [ -n "$BIT_SSH_SECRET_KEY" ]; then
+    echo "$BIT_SSH_SECRET_KEY" | base64 --decode > "$tempfile"
+    chmod 400 "$tempfile"
+    set -x
+    ssh-add "$tempfile"
+    rm -f "$tempfile"
+  fi
+
+  set -ux
+}
+
 init_git
 init_ngrok
 init_gh
 init_navi
+init_bit
 
 echo 'Please execute following like'
 echo '  init_code'
