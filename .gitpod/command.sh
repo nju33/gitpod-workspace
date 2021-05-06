@@ -4,7 +4,7 @@ set -eux
 
 init_git() {
   git config --global include.path "$HOME/.dotfiles/.gitconfig"
-  
+
   set +ux
   if [ -n "$GLITCH_REMOTE_URL" ]; then
     git remote add glitch "$GLITCH_REMOTE_URL"
@@ -29,14 +29,16 @@ init_gh() {
 }
 
 init_navi() {
-  local github_user="$(echo "$GITPOD_WORKSPACE_CONTEXT" | jq -r .repository.owner)"
+  github_user="$(echo "$GITPOD_WORKSPACE_CONTEXT" | jq -r .repository.owner)"
+  local github_user
   local remote_url="https://github.com/$github_user/cheats.git"
-  local target_dir="$(navi info cheats-path)/${github_user}__cheats"
-  
+  target_dir="$(navi info cheats-path)/${github_user}__cheats"
+  local target_dir
+
   if ! git ls-remote --exit-code "$remote_url" > /dev/null 2>&1; then
     return
   fi
-  
+
   if [ -d "$target_dir" ]; then
     cd "$target_dir" && git clone origin main
   else
@@ -51,4 +53,3 @@ init_navi
 
 echo 'Please execute following like'
 echo '  init_code'
-
