@@ -36,7 +36,7 @@ RUN curl -ongrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd
 #   && rm awscliv2.zip
 
 # Install transfer.sh
-# RUN git clone https://github.com/dutchcoders/transfer.sh.git ~/oss/transfer.sh
+RUN git clone https://github.com/dutchcoders/transfer.sh.git ~/oss/transfer.sh
 
 # RUN brew doctor
 # Install custom tools, runtime, etc.
