@@ -29,10 +29,20 @@ init_zoxide() {
 }
 
 init_bit() {
-  set +ux
+  set +u
+  tempfile="$(mktemp)"
+
+  trap "rm -f ""$tempfile""" ERR
+  set +x
+
   if [ -n "$BIT_SSH_SECRET_KEY" ]; then
-    ssh-add <(echo "$BIT_SSH_SECRET_KEY" | base64 --decode)
+    echo "$BIT_SSH_SECRET_KEY" | base64 --decode > "$tempfile"
+    chmod 400 "$tempfile"
+    set -x
+    ssh-add "$tempfile"
+    rm -f "$tempfile"
   fi
+
   set -ux
 }
 
