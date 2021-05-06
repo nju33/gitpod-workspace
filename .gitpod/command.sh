@@ -73,8 +73,8 @@ init_rclone() {
     mkdir -p "$(dirname "$config_file")"
   fi
 
-  if [ -n "$RCLONE_CONFIG" ]; then
-    echo "$RCLONE_CONFIG" | base64 --decode >"$config_file"
+  if [ -n "$RCLONE_CONFIG_CONTENTS" ]; then
+    echo "$RCLONE_CONFIG_CONTENTS" | base64 --decode >"$config_file"
   fi
 
   set -ux
