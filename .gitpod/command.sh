@@ -30,17 +30,15 @@ init_gh() {
 
 init_navi() {
   github_user="$(echo "$GITPOD_WORKSPACE_CONTEXT" | jq -r .repository.owner)"
-  local github_user
-  local remote_url="https://github.com/$github_user/cheats.git"
+  remote_url="https://github.com/$github_user/cheats.git"
   target_dir="$(navi info cheats-path)/${github_user}__cheats"
-  local target_dir
 
-  if ! git ls-remote --exit-code "$remote_url" > /dev/null 2>&1; then
+  if ! git ls-remote --exit-code "$remote_url" >/dev/null 2>&1; then
     return
   fi
 
   if [ -d "$target_dir" ]; then
-    cd "$target_dir" && git clone origin main
+    cd "$target_dir" && git pull --ff-only origin main
   else
     git clone "$remote_url" "$target_dir"
   fi
@@ -54,7 +52,9 @@ init_bit() {
   set +x
 
   if [ -n "$BIT_SSH_SECRET_KEY" ]; then
-    echo "$BIT_SSH_SECRET_KEY" | base64 --decode > "$tempfile"
+    eval "$(ssh-agent -s)"
+
+    echo "$BIT_SSH_SECRET_KEY" | base64 --decode >"$tempfile"
     chmod 400 "$tempfile"
     set -x
     ssh-add "$tempfile"
@@ -70,5 +70,9 @@ init_gh
 init_navi
 init_bit
 
-echo 'Please execute following like'
+set +x
+
+echo ''
+echo '💡 Please execute following like'
 echo '  init_code'
+echo ''
