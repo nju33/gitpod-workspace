@@ -7,7 +7,12 @@ image:
 #     onOpen: open-preview
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - before: .gitpod/before.sh
+  - before: |
+      curl -sSf -o "$HOME/.ssh/github.gpg" https://github.com/nju33/.gitpod/raw/main/.ssh/github.gpg
+      gpg --quiet --batch --yes --decrypt --passphrase="$SSH_GITHUB_PASSPHRASE" --output "$HOME/.ssh/github" "$HOME/.ssh/github.gpg"
+      git submodule update --init
+
+      .gitpod/before.sh
     init: .gitpod/init.sh
     command: .gitpod/command.sh
 

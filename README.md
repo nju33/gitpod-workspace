@@ -8,3 +8,4 @@
 - `GH_AUTHTOKEN` is GitHub CLI's authentication
 - `BIT_SSH_SECRET_KEY` is you ssh secret key encoded in base64 for bit.dev
 - `RCLONE_CONFIG_CONTENTS` is RClone's config in base64
+- `SSH_GITHUB_PASSPHRASE`
