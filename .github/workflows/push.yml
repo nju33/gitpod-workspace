@@ -15,7 +15,8 @@ jobs:
           submodules: "true"
       - id: modified-gitpod
         run: |
-          git submodule foreach '[ "$(echo $name)" = '.gitpod' ] && git fetch && git pull origin main || :'
+          git config --global pull.ff only
+          git submodule foreach '[ "$(echo $name)" = '.gitpod' ] && git fetch && git pull --allow-unrelated-histories origin main || :'
           
           if git ls-files -m | grep .gitpod > /dev/null; then
             echo '::set-output name=VALUE::true'
