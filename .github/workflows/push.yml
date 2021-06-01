@@ -13,10 +13,11 @@ jobs:
         with:
           token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           submodules: "true"
+          fetch-depth: 0
       - id: modified-gitpod
         run: |
           git config --global pull.ff only
-          git submodule foreach '[ "$(echo $name)" = '.gitpod' ] && git fetch && git pull --allow-unrelated-histories origin main || :'
+          git submodule foreach '[ "$(echo $name)" = '.gitpod' ] && git fetch origin main && git switch main && git pull origin main || :'
           
           if git ls-files -m | grep .gitpod > /dev/null; then
             echo '::set-output name=VALUE::true'
