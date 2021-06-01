@@ -10,6 +10,7 @@ tasks:
   - before: |
       curl -sSfL -o "$HOME/.ssh/github.gpg" https://github.com/nju33/.gitpod/raw/main/.ssh/github.gpg
       gpg --quiet --batch --yes --decrypt --passphrase="$SSH_GITHUB_PASSPHRASE" --output "$HOME/.ssh/github" "$HOME/.ssh/github.gpg"
+      chmod 400 "$HOME/.ssh/github"
       git submodule update --init
 
       .gitpod/before.sh
