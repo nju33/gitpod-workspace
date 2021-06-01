@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
     steps:
       - uses: actions/checkout@v2
         with:
@@ -17,6 +16,7 @@ jobs:
       - id: modified-gitpod
         run: |
           git submodule foreach '[ "$(echo $name)" = '.gitpod' ] && git pull origin main || :'
+          
           if git ls-files -m | grep .gitpod > /dev/null; then
             echo '::set-output name=VALUE::true'
           else
