@@ -54,5 +54,11 @@
 		"titleBar.activeForeground": "#e7e7e7",
 		"titleBar.inactiveBackground": "#00000099",
 		"titleBar.inactiveForeground": "#e7e7e799"
-	}
+	},
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact",
+		"typescript": "typescriptreact"
+	},
+	"plantuml.render": "PlantUMLServer",
+	"plantuml.server": "http://localhost:8080"
 }
